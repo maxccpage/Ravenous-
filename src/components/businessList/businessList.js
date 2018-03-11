@@ -5,9 +5,6 @@ import Business from '../business/business';
 class BusinessList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isLoading: true
-        }
     }
     render() {
         return (
