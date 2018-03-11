@@ -9,13 +9,18 @@ class App extends Component {
     super(props);
     this.state = {
       businesses: [],
-      testing: []
+      testing: [],
+      empty: true,
+      isLoading: false
     };
     this.searchYelp = this.searchYelp.bind(this);
   }
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
-      this.setState({ businesses: businesses });
+      this.setState({
+        businesses: businesses,
+        empty: false
+      });
     });
   }
 
@@ -24,7 +29,7 @@ class App extends Component {
       <div className="App">
         <h1>ravenous</h1>
         <SearchBar searchYelp={this.searchYelp} />
-        {this.state.businesses === [] ? (
+        {this.state.empty === false ? (
           <BusinessList businesses={this.state.businesses} />
         ) : (
           <p className="Search-Message">
