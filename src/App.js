@@ -14,6 +14,11 @@ class App extends Component {
       isLoading: false
     };
     this.searchYelp = this.searchYelp.bind(this);
+    this.messages = [
+      'Pizza in Toronto',
+      'Sushi in Markham',
+      'Italian in Vaughn'
+    ];
   }
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
@@ -33,8 +38,7 @@ class App extends Component {
           <BusinessList businesses={this.state.businesses} />
         ) : (
           <p className="Search-Message">
-            {' '}
-            Search your favourite restaurants! Try "Sushi" in "Toronto"{' '}
+            Search your favourite restaurants! Try "Sushi" in "Toronto"
           </p>
         )}
       </div>
